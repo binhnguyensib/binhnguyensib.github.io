@@ -5,8 +5,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development --open --hot --port 3100",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
+  "homepage": "https://<binhnguyensib>.github.io/<AeonMall>",
   "author": "",
   "license": "ISC",
   "description": "",
@@ -20,6 +23,7 @@
     "@types/react-dom": "19.1.6",
     "babel-loader": "10.0.0",
     "css-loader": "7.1.2",
+    "gh-pages": "^6.3.0",
     "html-webpack-plugin": "5.6.3",
     "style-loader": "4.0.0",
     "webpack": "5.99.9",
