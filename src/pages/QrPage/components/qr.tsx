@@ -25,7 +25,13 @@ const BarcodeScanner = ({
     const qrCodeRegionId = "reader";
     const [isOnScan, setIsOnScan] = useState(onScan || false);
     const lastScannedAt = useRef<number>(0);
-
+    // useEffect(() => {
+    //     const f = async () => {
+    //         const res = await getItemList()
+    //         useListItemStore.getState().load(res)
+    //     }
+    //     f();
+    // }, [])
     const startScanner = async (cameraId: string) => {
         if (isTransitioningRef.current) return;
         isTransitioningRef.current = true;
