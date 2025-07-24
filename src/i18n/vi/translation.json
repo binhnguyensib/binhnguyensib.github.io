@@ -6,8 +6,8 @@
         "option2": "English"
     },
     "footer": {
-        "chatbot": "Shopping Assistant",
-        "cart": "My Cart"
+        "chatbot": "Trợ Lí Mua Sắm",
+        "cart": "Giỏ hàng của tôi"
     },
     "component":{
         "itemsCart":{
