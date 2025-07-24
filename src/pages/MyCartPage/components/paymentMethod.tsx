@@ -168,9 +168,9 @@ export default function PaymentMethod() {
                     className="w-1/3 h-[50px] flex justify-start items-start"
                     onClick={() => naviagte("/mycart")}
                 >
-                    <div className="flex flex-row items-center justify-start">
-                        <ReplayIcon className="mr-3 pr-3 border-r-2 border-black text-black w-8 h-8" fontSize="large" />
-                        <span>{i18n.t("paymentBanking.return")}</span>
+                    <div className="flex flex-row items-center justify-start whitespace-nowrap">
+                            <ReplayIcon className="mr-3 pr-3 border-r-2 border-black text-black w-8 h-8 flex-shrink-0" fontSize="large" />
+                            <span className="whitespace-nowrap">{i18n.t("paymentCash.return")}</span>
                     </div>
                 </Button>
             </div>
