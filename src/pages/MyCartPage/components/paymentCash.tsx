@@ -5,6 +5,7 @@ import { useListItemStore } from "../../../zustand/listItemStore";
 import { Button } from "@mui/material";
 import Robot from "../../../asset/resource/AI_tt.png";
 import ReplayIcon from '@mui/icons-material/Replay';
+import i18n from "../../../i18n";
 export default function PaymentCash() {
     const [openPaySuccess, setOpenPaySuccess] = useState(false);
     const navigate = useNavigate();
@@ -24,7 +25,7 @@ export default function PaymentCash() {
                 <div className="flex flex-col items-center justify-center">
                     <div className="mb-3">
                         <b>
-                            Mã đơn hàng
+                            {i18n.t("paymentCash.orderId")}
                         </b>
                     </div>
                     <div className="bg-[#C3399A] w-4/5 mx-3 py-2 rounded-lg flex justify-center items-center">
@@ -35,12 +36,12 @@ export default function PaymentCash() {
 
                     <h3>
                         <b>
-                            Vui lòng đưa mã này
+                            {i18n.t("paymentCash.noti1")}
                         </b>
                     </h3>
                     <h3>
                         <b>
-                            cho nhân viên thanh toán
+                            {i18n.t("paymentCash.noti2")}
                         </b>
                     </h3>
                     <img src={Robot} alt="Robot" width={200} height={200} className="mt-5" />
@@ -52,10 +53,11 @@ export default function PaymentCash() {
                             px: 2,
                             py: 0,
                             color: "black",
-                            fontSize: "0.75rem",
+                            fontSize: "1rem",
                             backgroundColor: "#e464bc",
                             justifyContent: "flex-start", // Quan trọng để nút chính căn theo start
                             alignItems: "flex-center", // Quan trọng để nút chính căn theo start
+                            textTransform: 'none',
                             "&:hover": {
                                 backgroundColor: "#c94aa3",
                             },
@@ -65,7 +67,7 @@ export default function PaymentCash() {
                     >
                         <div className="flex flex-row items-center justify-start">
                             <ReplayIcon className="mr-3 pr-3 border-r-2 border-black text-black w-8 h-8" fontSize="large" />
-                            <span>Quay lại</span>
+                            <span>{i18n.t("paymentCash.return")}</span>
                         </div>
                     </Button>
                 </div>
@@ -76,7 +78,7 @@ export default function PaymentCash() {
                 onClose={() => { navigate("/create") }}
                 onConfirm={handleConfirmPay}
                 title=""
-                text="Đơn hàng đã được thanh toán thành công gòi nha!"
+                text={i18n.t("infoDialog.text")}
             />
         </>
     )

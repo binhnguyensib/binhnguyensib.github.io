@@ -12,6 +12,7 @@ import ConfirmDialog from "./components/digalogConfirm";
 import PaymentCash from "../../asset/resource/cash.png";
 import PaymentTransfer from "../../asset/resource/NAPAS_icon.png";
 import DiscountIcon from "../../asset/resource/discount-voucher-icon.png"
+import i18n from "../../i18n";
 export default function MyCart() {
     const text = [, "đơn hàng này chứ?"];
     const text_ = ["Vui lòng xác nhận", "thanh toán đơn hàng"]
@@ -71,16 +72,16 @@ export default function MyCart() {
     return (
         <div className="h-screen flex flex-col w-full">
             <div className="h-[50px] flex justify-center items-center font-bold">
-                Giỏ hàng của tôi
+                {i18n.t("mycart.header")}
             </div>
 
             <div className="flex flex-col px-2 flex-grow min-h-0 overflow-auto">
                 <div className="py-1 my-1 flex flex-col">
                     <div className="font-bold ">
-                        Danh Sách Sản Phẩm
+                        {i18n.t("mycart.itemsList.header")}
                     </div>
                     <div>
-                        Tổng: {listItem.length} sản phẩm
+                        {i18n.t("mycart.itemsList.total")} {listItem.length} {i18n.t("mycart.itemsList.item")}
                     </div>
                 </div>
 
@@ -91,34 +92,39 @@ export default function MyCart() {
 
             {listItem.length > 0 && (
                 <div className="px-0 py-3 bg-white shadow-inner flex flex-col gap-2">
-                    <div className="bg-[#ffd3f1] text-[#c6439f] py-2 flex flex-row justify-around items-center">
-                        <img src={DiscountIcon} alt="DiscountIcon" width={30} height={30} />
-                        <b>  Mã Giảm Giá & Ưu đãi Của Tôi</b>
-                        <div><KeyboardArrowRightIcon /></div>
+                    <div className="bg-[#ffd3f1] text-[#c6439f] py-2 flex flex-row justify-between items-center px-4">
+                        <div className="flex items-center gap-3">
+                            <img src={DiscountIcon} alt="DiscountIcon" width={30} height={30} />
+                            <b>{i18n.t("mycart.coupon")}</b>
+                        </div>
+                        <div>
+                            <KeyboardArrowRightIcon />
+                        </div>
                     </div>
-                    <div className="px-5"><b>Thông Tin Đơn Hàng</b></div>
+                    
+                    <div className="px-5"><b>{i18n.t("mycart.order.info")}</b></div>
 
                     <div className="px-5">
                         <div className="border-b border-black flex justify-between py-1 px-2">
-                            <div>Tổng</div>
-                            <div>{listItem.length} sản phẩm</div>
+                            <div>{i18n.t("mycart.order.total")}</div>
+                            <div>{listItem.length} {i18n.t("mycart.order.item")}</div>
                         </div>
 
                         <div className="border-b border-black">
                             <div className="flex justify-between py-1 px-2">
-                                <div>Tổng tiền</div>
+                                <div>{i18n.t("mycart.order.totalPrice")}</div>
                                 <div className="text-xl font-bold">
                                     {convertNumToCurrency(finalPrice)}
                                 </div>
                             </div>
                             <div className="flex justify-between py-1 px-2">
-                                <div>Giảm giá</div>
+                                <div>{i18n.t("mycart.order.discount")}</div>
                                 <div className="text-green-500 text-xl">-0</div>
                             </div>
                         </div>
 
                         <div className="flex justify-between py-1 px-2 items-center">
-                            <div className="text-2xl font-bold">Thành tiền</div>
+                            <div className="text-2xl font-bold">{i18n.t("mycart.order.grandTotal")}</div>
                             <div className="text-4xl text-[#b63383] font-bold">
                                 {convertNumToCurrency(finalPrice)}
                             </div>
@@ -127,33 +133,33 @@ export default function MyCart() {
 
                     <Button
                         variant="contained"
-                        sx={{ color: "black", backgroundColor: "#ff4c4c" }}
+                        sx={{ color: "black",fontSize: "1rem", backgroundColor: "#ff4c4c", textTransform: 'none', fontWeight: 'bold' }}
                         className="w-full"
                         color="error"
                         onClick={() => setOpenConfirmRemove(true)}
                     >
-                        Hủy đơn hàng
+                        {i18n.t("mycart.order.cancel")}
                     </Button>
 
                     <div className="flex gap-2">
                         <Button
                             variant="contained"
-                            sx={{ color: "black", fontSize: "0.75rem", backgroundColor: "#ff9ee1" }}
+                            sx={{ color: "black", fontSize: "0.75rem", backgroundColor: "#ff9ee1", textTransform: 'none',fontWeight: 'bold' }}
                             className="w-1/2 h-[50px] flex flex-col justify-center items-center"
                             onClick={() => navigate("/payment-cash")}
                         >
                             <img src={PaymentCash} alt="PaymentCash" width={30} height={30} />
-                            Thanh toán tiền mặt
+                            {i18n.t("mycart.payment.cash")}
                         </Button>
 
                         <Button
                             variant="contained"
-                            sx={{ color: "black", fontSize: "0.75rem", backgroundColor: "#ff9ee1" }}
+                            sx={{ color: "black", fontSize: "0.75rem", backgroundColor: "#ff9ee1",textTransform: 'none',fontWeight: 'bold' }}
                             className="w-1/2 h-[50px] flex flex-col justify-center items-center"
                             onClick={() => navigate("/payment-transfer")}
                         >
                             <img src={PaymentTransfer} alt="PaymentTransfer" className="mt-2" width={35} height={35} />
-                            Chuyển khoản
+                            {i18n.t("mycart.payment.bank")}
                         </Button>
                     </div>
                 </div>
@@ -166,8 +172,8 @@ export default function MyCart() {
                 setOpen={setOpenConfirmRemove}
                 onClose={handleCancel}
                 onConfirm={handleConfirmRemove}
-                text1="Bạn có chắc muốn hủy"
-                text2="đơn hàng này chứ?"
+                text1= {i18n.t("confirmDialog.cancel.text1")}
+                //text2= {i18n.t("confirmDialog.cancel.text2")}
             />
             <ConfirmDialog
                 open={openConfirmPay}
@@ -175,7 +181,7 @@ export default function MyCart() {
                 onClose={handleCancel}
                 onConfirm={handleConfirmPay}
                 text1="Vui lòng xác nhận"
-                text2="thanh toán đơn hàng"
+                //text2="thanh toán đơn hàng"
             />
         </div>
     );

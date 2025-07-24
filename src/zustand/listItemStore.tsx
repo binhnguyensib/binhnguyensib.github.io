@@ -11,6 +11,7 @@ export interface ItemDto {
 
 export interface ListItemDto {
     listItem: Array<ItemDto>;
+    language: string;
 }
 
 interface ListItemStore extends ListItemDto {
@@ -19,10 +20,13 @@ interface ListItemStore extends ListItemDto {
     removeItem: (item: ItemDto) => void;
     updateNumItem: (itemId: String, num: number) => void;
     removeAll: () => void;
+    changeLanguage: (language: string) => void;
+    loadLanguage: () => void;
 }
 
 export const useListItemStore = create<ListItemStore>()((set) => ({
     listItem: [],
+    language: "vi",
     load: (newList: Array<ItemDto>) => {
         const newData = newList.map((item) => ({
             ...item,
@@ -32,6 +36,14 @@ export const useListItemStore = create<ListItemStore>()((set) => ({
         set(() => ({
             listItem: newData,
         }));
+    },
+    loadLanguage: () => {
+        const language = localStorage.getItem("language");
+        if (language) {
+            set(() => ({
+                language: language || "vi",
+            }));
+        }
     },
     addItem: (item) => {
         set((state) => {
@@ -65,6 +77,12 @@ export const useListItemStore = create<ListItemStore>()((set) => ({
                     : i
             ),
         }));
+    },
+    changeLanguage: (language: string) => {
+        set(() => ({
+            language,
+        }));
+        localStorage.setItem("language", language);
     },
 
     removeAll: () => {

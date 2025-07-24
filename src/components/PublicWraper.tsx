@@ -10,6 +10,7 @@ export default function PublicWraper({ children }: any) {
             useListItemStore.getState().load(
                 listItem
             )
+            useListItemStore.getState().loadLanguage();
         } catch (e) {
             console.log(e);
         }

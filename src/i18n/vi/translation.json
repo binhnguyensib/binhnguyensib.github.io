@@ -1,0 +1,101 @@
+{
+    "home": {
+        "buyButton": "TẠO ĐƠN HÀNG MỚI",
+        "language": "Chọn ngôn ngữ",
+        "option1": "Tiếng Việt",
+        "option2": "English"
+    },
+    "footer": {
+        "chatbot": "Shopping Assistant",
+        "cart": "My Cart"
+    },
+    "component":{
+        "itemsCart":{
+            "unitPrice":"Giá:"
+        }
+    },
+    "qr": {
+        "header": "Đưa mã sản phẩm vào khung sau để quét",
+        "body": {
+            "noItem": {
+                "title": "Hiện chưa có sản phẩm nào được quét",
+                "description": "Vui lòng đưa sản phẩm vào khung hình để quét"
+            },
+            "item": {
+                "title": "Các sản phẩm đã quét",
+                "total": "Tổng thanh toán"
+            },
+            "scanning": "Bắt đầu quét",
+            "changeCam":"🔄 Đổi camera",
+            "closeScan":"✖ Đóng"
+        },
+        "log":{
+            "cantFind":"Không tìm thấy sản phẩm",
+            "errorScan":"🚫 Lỗi khi khởi động máy quét:",
+            "cantFindCam":"Không tìm thấy camera.",
+            "cantGetListCam":"🚫 Không thể lấy danh sách camera:",
+            "cantAccessCam":"Không thể truy cập camera."
+        }
+    },
+    "mycart": {
+        "header":"Giỏ hàng của tôi",
+        "itemsList":{
+            "header" :"Danh sách sản phẩm",
+            "total": "Tổng:",
+            "item":"sản phẩm"
+        },
+        "coupon":"Mã Giảm Giá & Ưu đãi của tôi",
+        "order":{
+            "info":"Thông Tin Đơn Hàng",
+            "total":"Tổng",
+            "item":"sản phẩm",
+            "totalPrice":"Tổng tiền",
+            "discount":"Giảm gía",
+            "grandTotal":"Thành tiền",
+            "cancel":"Hủy đơn hàng"
+        },
+        "payment":{
+            "cash":"Thanh toán tiền mặt",
+            "bank":"Chuyển khoản"
+        },
+        "emptyCart":"Giỏ hàng của bạn hiện đang trống"
+        
+    },
+    "confirmDialog":{
+        "cancel":{
+            "text1":"Bạn có chắc muốn hủy đơn hàng này chứ?",
+            "keep":"Giữ đơn hàng",
+            "cancel":"Hủy"
+        }
+    },
+    "infoDialog":{
+        "text":"Đơn hàng đã được thanh toán thành công",
+        "ok":"Xin cảm ơn!"
+    },
+    "assistant": {
+        "header": "\"Em On\" - Trợ lý mua sắm",
+        "body": {
+            "placeholder": "Hỏi “Em On” bất kì điều gì..."
+        }
+    },
+    "paymentCash":{
+        "orderId":"Mã Đơn Hàng",
+        "noti1":"Vui lòng đưa mã này cho",
+        "noti2":"nhanh viên thanh toán",
+        "return":"Quay lại"
+    },
+    "paymentBanking":{
+        "credit":{
+            "title":"Thẻ Tín dụng/ Ghi nợ",
+            "description": "Visa/ Master Card/ JCB/ Amex"
+        },
+        "Napas":"Thẻ nội địa NAPAS",
+        "Vnpay":"Thanh toán trực tuyến VNPAY",
+        "Momo":"MoMo",
+        "Applepay":"Apple Pay",
+        "Zalopay":"ZaloPay",
+        "paymentMethod":"Phương thức thanh toán",
+        "processing":"Đang xử lý...",
+        "return":"Quay lại"
+    }
+}

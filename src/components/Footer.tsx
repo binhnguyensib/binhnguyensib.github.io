@@ -6,6 +6,7 @@ import SmartToyIcon from '@mui/icons-material/SmartToy';
 import { useNavigate } from "react-router-dom";
 import { FaBarcode } from "react-icons/fa";
 import Robot from "../asset/resource/robot1.png";
+import i18n from "../i18n";
 export default function Footer() {
     const navigate = useNavigate();
     return (
@@ -29,7 +30,7 @@ export default function Footer() {
                 <div className="flex flex-col items-center">
                     <img src={Robot} alt="Robot" width={40} height={40} />
                     <div>
-                        Trợ lý mua sắm
+                        {i18n.t("footer.chatbot")}
                     </div>
                 </div>
             </Button>
@@ -76,7 +77,7 @@ export default function Footer() {
                 }}
                 onClick={() => navigate("/mycart")}
             >
-                <CartIcon className="w-10 h-10" color="white" /> Giỏ Hàng Của Tôi
+                <CartIcon className="w-10 h-10" color="white" /> {i18n.t("footer.cart")}
             </Button>
         </div>
     );

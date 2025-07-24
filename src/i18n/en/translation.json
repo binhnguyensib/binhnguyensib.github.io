@@ -1,0 +1,101 @@
+{
+    "home": {
+        "buyButton": "CREATE NEW ORDER",
+        "language": "CHOOSE LANGUAGE",
+        "option1": "Tiếng Việt",
+        "option2": "English"
+    },
+    "footer": {
+        "chatbot": "Shopping Assistant",
+        "cart": "My Cart"
+    },
+    "component":{
+        "itemsCart":{
+            "unitPrice":"Unit Price:"
+        }
+    },
+    "qr": {
+        "header": "Please place the product barcode in the frame below to scan",
+        "body": {
+            "noItem": {
+                "title": "No products have been scanned yet",
+                "description": "Please place the product barcode in the frame below to scan"
+            },
+            "item": {
+                "title": "Scanned products",
+                "total": "Grand total"
+            },
+            "scanning": "Start scanning",
+            "changeCam":"🔄Change camera",
+            "closeScan":"✖ Close"
+        },
+        "log":{
+            "cantFind":"Product not found",
+            "errorScan":"🚫 Error when start scanner",
+            "cantFindCam":"Camera not fund.",
+            "cantGetListCam":"🚫Can't get list of cameras:",
+            "cantAccessCam":"Can't access camera."
+        }
+    },
+    "mycart": {
+        "header":"My Cart",
+        "itemsList":{
+            "header" :"Items List",
+            "total": "Total:",
+            "item":"items"
+        },
+        "coupon":"My Vouchers & Promotions",
+        "order":{
+            "info":"Order Information",
+            "total":"Total",
+            "item":"items",
+            "totalPrice":"Total price",
+            "discount":"Discount",
+            "grandTotal":"Grand total",
+            "cancel":"Cancel Order"
+        },
+        "payment":{
+            "cash":"Cash payment",
+            "bank":"Bank transfer payment"
+        },
+        "emptyCart":"Your cart is currently empty"
+
+    },
+    "confirmDialog":{
+        "cancel":{
+            "text1":"Are you sure to cancel this order?",
+            "keep":"Keep Order",
+            "cancel":"Cancel"
+        }
+    },
+    "infoDialog":{
+        "text":"Order successfully completed",
+        "ok":"Thank you!"
+    },
+    "assistant": {
+        "header": "\"Em On\" - Shopping Assistant",
+        "body": {
+            "placeholder": "Got a question? Ask \"Em On\" anything!"
+        }
+    },
+    "paymentCash":{
+        "orderId":"Order ID",
+        "noti1":"Please show this code to the cashier",
+        "noti2":"",
+        "return":"Return"
+    },
+    "paymentBanking":{
+        "credit":{
+            "title":"Credit/ Debit Cart",
+            "description": "Visa/ Master Card/ JCB/ Amex"
+        },
+        "Napas":"NAPAS Domestic Card",
+        "Vnpay":"VNPAY Online Payment",
+        "Momo":"MoMo",
+        "Applepay":"Apple Pay",
+        "Zalopay":"ZaloPay",
+        "paymentMethod":"Payment Method",
+        "processing":"Processing...",
+        "return":"Return"
+    }
+}

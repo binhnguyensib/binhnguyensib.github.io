@@ -4,6 +4,7 @@ import { Button } from "@mui/material";
 import { convertNumToCurrency } from "../utils/numberConvert";
 import ConfirmDialogDelete from "./confirmDelete";
 import CloseIcon from '@mui/icons-material/Close';
+import i18n from "../i18n";
 export interface ItemCardProps {
     item: ItemDto;
 }
@@ -45,7 +46,7 @@ export default function ItemCard({ item }: ItemCardProps) {
                             {item.name}
                         </h4>
                         <div className="flex flex-row justify-between items-center h-10 w-full">
-                            <p className="text-sm w-4/10 text-gray-500">Giá: {convertNumToCurrency(item.price)}</p>
+                            <p className="text-sm w-4/10 text-gray-500">{i18n.t("component.itemsCart.unitPrice")} {convertNumToCurrency(item.price)}</p>
 
                             <div className="flex flex-row  items-center justify-center mx-1">
                                 <Button

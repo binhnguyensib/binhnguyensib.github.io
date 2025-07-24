@@ -1,5 +1,6 @@
 import React from 'react';
 import Logo from "../../../asset/resource/aeon.png";
+import i18n from '../../../i18n';
 import {
     Dialog,
     DialogTitle,
@@ -68,7 +69,7 @@ export default function ConfirmDialog({ open, setOpen, onClose, onConfirm, title
                         mt: 4
                     }}
                 >
-                    Xác nhận
+                    {i18n.t("infoDialog.ok")}
                 </Button>
             </DialogContent>
         </Dialog>

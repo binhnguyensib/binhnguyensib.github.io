@@ -3,6 +3,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ReplayIcon from '@mui/icons-material/Replay';
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import InforDialog from "./digalogSuccess";
 import TheTinDung from "../../../asset/resource/Credit.png";
 import TheNapas from "../../../asset/resource/NAPAS.png";
 import TheVNPay from "../../../asset/resource/VNPAY.png";
@@ -10,6 +11,7 @@ import TheMomo from "../../../asset/resource/MoMo.png";
 import TheApplePay from "../../../asset/resource/Apple Pay.png";
 import TheZaloPay from "../../../asset/resource/ZaloPay.png";
 import { useListItemStore } from "../../../zustand/listItemStore";
+import i18n from "../../../i18n";
 
 function PaymentCard({ icon, name, describe, onClick }: { icon: string, name: string, describe?: string, onClick: any }) {
     return (
@@ -79,28 +81,28 @@ export default function PaymentMethod() {
     const [isSuccess, setIsSuccess] = useState(false);
     const listPaymentMethod = [
         {
-            title: "Thẻ Tín dụng/Ghi nợ",
-            describe: "(Visa/Mastercard/JCB/Amex)",
+            title: i18n.t("paymentBanking.credit.title"),
+            describe: i18n.t("paymentBanking.credit.description"),
             icon: TheTinDung,
         },
         {
-            title: "Thẻ nội địa NAPAS",
+            title: i18n.t("paymentBanking.Napas"),
             describe: "",
             icon: TheNapas,
         }, {
-            title: "Thanh toán trực tuyến VNPAY",
+            title: i18n.t("paymentBanking.Vnpay"),
             describe: "",
             icon: TheVNPay,
         }, {
-            title: "Momo",
+            title: i18n.t("paymentBanking.Momo"),
             describe: "",
             icon: TheMomo,
         }, {
-            title: "Apple Pay",
+            title: i18n.t("paymentBanking.Applepay"),
             describe: "",
             icon: TheApplePay,
         }, {
-            title: "ZaloPay",
+            title: i18n.t("paymentBanking.Zalopay"),
             describe: "",
             icon: TheZaloPay,
         }
@@ -116,9 +118,12 @@ export default function PaymentMethod() {
     }
     return (
         <div className=" flex flex-col items-center">
-            <h2 className="text-xl  font-semibold my-4 text-center">
-                <b>Phương thức thanh toán</b>
-            </h2>
+            <div className="w-full">
+                <h2 className="text-xl font-semibold my-4 text-left pl-4">
+                    <b>{i18n.t("paymentBanking.paymentMethod")}</b>
+                </h2>
+            </div>
+
             <div className="flex flex-col mx-2 px-2 flex-1 items-center justify-center w-full h-full gap-2">
                 {
                     listPaymentMethod.map((item, index) => (
@@ -128,14 +133,19 @@ export default function PaymentMethod() {
             </div>
             {loading && <div className="flex mt-9 items-center justify-center rounded-xl w-9/10 h-24 border-1 border-black">
                 <CircularProgress color="secondary" size={32} />
-                <span className="ml-3 text-sm text-gray-600">Đang xử lý...</span>
+                <span className="ml-3 text-sm text-gray-600">{i18n.t("paymentBanking.processing")}</span>
             </div>}
-            {isSuccess &&
-                <div className="flex items-center mt-9 justify-center w-9/10 rounded-xl h-24 text-green-600 border-1 border-black">
-                    <CheckCircleIcon fontSize="large" />
-                    <span className="ml-2 text-base font-semibold">Thành công!</span>
-                </div>
-            }
+            <InforDialog
+                open={isSuccess}
+                setOpen={setIsSuccess}
+                onClose={() => setIsSuccess(false)}
+                onConfirm={() => {
+                    setIsSuccess(false);
+                    naviagte("/mycart"); 
+                }}
+                title=""
+                text={i18n.t("infoDialog.text")}
+            />
             {
                 !loading && !isSuccess && <div className="h-24"></div>
             }
@@ -146,10 +156,11 @@ export default function PaymentMethod() {
                         px: 2,
                         py: 0,
                         color: "black",
-                        fontSize: "0.75rem",
+                        fontSize: "1rem",
                         backgroundColor: "#e464bc",
                         justifyContent: "flex-start",
                         alignItems: "flex-center",
+                        textTransform: 'none',
                         "&:hover": {
                             backgroundColor: "#c94aa3",
                         },
@@ -159,7 +170,7 @@ export default function PaymentMethod() {
                 >
                     <div className="flex flex-row items-center justify-start">
                         <ReplayIcon className="mr-3 pr-3 border-r-2 border-black text-black w-8 h-8" fontSize="large" />
-                        <span>Quay lại</span>
+                        <span>{i18n.t("paymentBanking.return")}</span>
                     </div>
                 </Button>
             </div>

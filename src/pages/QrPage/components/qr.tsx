@@ -6,6 +6,7 @@ import {
 } from "html5-qrcode";
 import { useListItemStore } from "../../../zustand/listItemStore";
 import { getItemById, getItemList } from "../../../apis/itemAPI";
+import i18n from "../../../i18n";
 
 export interface BarcodeScannerProps {
     onScan?: boolean;
@@ -62,7 +63,7 @@ const BarcodeScanner = ({
 
                     const item = await getItemById(decodedText);
                     if (!item) {
-                        alert("Không tìm thấy sản phẩm");
+                        alert(i18n.t("qr.log.cantFind"));
                         return;
                     }
 
@@ -87,7 +88,7 @@ const BarcodeScanner = ({
 
             setCurrentCameraId(cameraId);
         } catch (error) {
-            console.error("🚫 Lỗi khi khởi động máy quét:", error);
+            console.error(i18n.t("qr.log.errorScan"), error);
         } finally {
             isTransitioningRef.current = false;
         }
@@ -130,12 +131,12 @@ const BarcodeScanner = ({
                     }
                     startScanner(backCam.id);
                 } else {
-                    alert("Không tìm thấy camera.");
+                    alert(i18n.t("qr.log.cantFindCam"));
                 }
             })
             .catch((err) => {
-                console.error("🚫 Không thể lấy danh sách camera:", err);
-                alert("Không thể truy cập camera.");
+                console.error(i18n.t("qr.log.cantGetListCam"), err);
+                alert(i18n.t("qr.log.cantAccessCam"));
             });
 
         return () => {
@@ -163,7 +164,7 @@ const BarcodeScanner = ({
                             onClick={switchCamera}
                             className="absolute top-4 right-4 z-10 px-3 py-1 bg-blue-600 text-white rounded shadow hover:bg-blue-700 transition"
                         >
-                            🔄 Đổi Camera
+                            {i18n.t("qr.body.changeCam")}
                         </button>
                     )}
                     <button
@@ -173,13 +174,13 @@ const BarcodeScanner = ({
                         }}
                         className="absolute bottom-4 right-4 z-10 px-3 py-1 bg-gray-800 text-white rounded shadow hover:bg-red-600 transition"
                     >
-                        ✖ Đóng
+                        {i18n.t("qr.body.closeScan")}
                     </button>
                 </div>
             ) : (
                 <div className="flex flex-col items-center justify-center w-full h-full">
                     <h2 className="text-base font-semibold mb-4 text-center">
-                        Đưa mã sản phẩm vào khung hình để quét
+                        {i18n.t("qr.header")}
                     </h2>
                     <div className="relative w-19/20 h-34 mt-5">
                         {/* The button */}
@@ -190,7 +191,7 @@ const BarcodeScanner = ({
                             }}
                             className="w-full h-full bg-gray-700 text-white rounded-lg flex items-center justify-center text-xl hover:bg-green-600 transition"
                         >
-                            Bắt đầu quét
+                            {i18n.t("qr.body.scanning")}
                         </button>
 
                         {/* 4 white barcode-style corners */}

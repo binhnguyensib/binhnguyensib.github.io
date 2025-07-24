@@ -4,6 +4,7 @@ import MessCard from "./components/messCard";
 import { Button } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 import Robot from "../../asset/resource/robot2.png";
+import i18n from "../../i18n";
 declare global {
     interface Window {
         botpressWebChat?: {
@@ -65,7 +66,18 @@ export default function Assistant() {
             role: "model",
             text: "Dạ rõ, Emon đã hiểu rồi ạaaaa🥰",
             img: null
+        },
+        {
+            role: "user",
+            text:"Khi khách hàng đặt câu hỏi bằng tiếng Anh, em hãy trả lời bằng tiếng Anh nhé!",
+            img: null
+        },
+        {
+            role: "model",
+            text: "Dạ rõ, Emon đã hiểu rồi ạaaaa🥰",
+            img: null
         }
+
 
     ]);
 
@@ -157,13 +169,13 @@ export default function Assistant() {
         <div className="h-full flex flex-col items-center justify-around">
             <div className="w-3/4">
 
-                <p className="text-lg font-bold py-2 flex flex-row justify-around items-center gap-2"><div></div>"Em On" - Trợ lý AEON <img src={Robot} alt="Robot" width={40} height={40} /></p>
+                <p className="text-lg font-bold py-2 flex flex-row justify-around items-center gap-2"><div></div>{i18n.t("assistant.header")} <img src={Robot} alt="Robot" width={40} height={40} /></p>
                 <hr className="border-gray-500 w-3/4 px-0 py-0 my-0 w-full" />
             </div>
-            {history.length === 0 && <p className="text-sm text-gray-500">Bạn cần hỗ trợ gì hôm nay?</p>}
+            {/* {history.length === 0 && <p className="text-sm text-gray-500">Bạn cần hỗ trợ gì hôm nay?</p>} */}
 
             <div className="flex flex-col w-full mx-3 px-3 min-h-3/5 max-h-18/20 overflow-y-auto">
-                {history.filter((_, idx) => idx > 7).map((item, index) => (
+                {history.filter((_, idx) => idx > 9).map((item, index) => (
                     <div
                         key={index}
                         className={`w-full my-2 flex flex-row ${item.role === "user" ? "justify-end" : "justify-start"}`}
@@ -199,7 +211,7 @@ export default function Assistant() {
                         if (e.key === "Enter") handleSendOrPause();
                     }}
                     className="mx-2 w-8/10 px-3 py-2 rounded-full border border-gray-500 outline-none flex justify-center items-center"
-                    placeholder="Nhập thông tin..."
+                    placeholder={i18n.t("assistant.body.placeholder")}
                     disabled={loading && typingText !== ""}
                 />
                 <label htmlFor="nscnnkam" className="cursor-pointer mr-2">

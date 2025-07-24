@@ -1,6 +1,7 @@
 import React from "react";
 import { ItemDto, useListItemStore } from "../zustand/listItemStore";
 import ItemCard from "../components/itemCard";
+import i18n from "../i18n";
 
 export interface ListItemProps {
     listItemId?: string[];
@@ -18,7 +19,7 @@ export default function ListItems({ className }: ListItemProps) {
                 ))
             ) : (
                 <div className="flex flex-col items-center text-gray-500">
-                    Hiện chưa có sản phẩm nào được quét
+                    {i18n.t("mycart.emptyCart")}
                 </div>
             )}
         </div>
